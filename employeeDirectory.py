@@ -19,7 +19,9 @@ while True:
     if choice == '1':
         name = input("Enter employee name: ")
         position = input("Enter employee position: ")
-        employees.append({'name': name, 'position': position})
+        department = input("Enter employee department: ")
+        id= input("Enter employee id number: ")
+        employees.append({'name': name, 'position': position, 'department': department, 'id': id})
         print("Employee added successfully.")
 
     elif choice == '2':
@@ -27,14 +29,14 @@ while True:
             print("No employees found.")
         else:
             for i, emp in enumerate(employees, start=1):
-                print(f"{i}. {emp['name']} - {emp['position']}")
+                print(f"{i}. {emp['name']} - {emp['position']} - {emp['department']} - {emp['id']}")
 
     elif choice == '3':
         search_name = input("Enter employee name to search: ")
         found = False
         for emp in employess:
             if emp['name'].lower() == search_name.lower():
-                print(f"Found: {emp['name']} - {emp['position']}")
+                print(f"Found: {emp['name']} - {emp['position']} - {emp['department']} - {emp['id']}")
                 found = True
                 break
         if not found:
