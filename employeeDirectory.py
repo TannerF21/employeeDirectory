@@ -1,3 +1,6 @@
+import json
+
+
 employees = []
 
 def display_menu():
@@ -66,3 +69,12 @@ while True:
 
     else:
         print("Invalid choice. Please try again.")
+
+
+# Save:
+with open("employees.json", "w") as file:
+    json.dump(employees, file)
+
+# Load:
+with open("employees.json", "r") as file:
+    employees = json.load(file)
