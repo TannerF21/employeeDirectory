@@ -1,2 +1,2 @@
 # employeeDirectory
-Employee directory to add, view, search and delete employees.
+Employee directory to add, view, search, update and delete employees.
