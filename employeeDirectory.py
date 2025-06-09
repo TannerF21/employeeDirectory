@@ -18,11 +18,15 @@ while True:
 
     if choice == '1':
         name = input("Enter employee name: ")
-        position = input("Enter employee position: ")
-        department = input("Enter employee department: ")
-        id= input("Enter employee id number: ")
-        employees.append({'name': name, 'position': position, 'department': department, 'id': id})
-        print("Employee added successfully.")
+        if any(emp[name].lower() == name.lower() for emp in employees):
+            print("Employee with this name already exists.")
+        else:
+            position = input("Enter employee position: ")
+            department = input("Enter employee department: ")
+            identification = input("Enter employee id number: ")
+       
+            employees.append({'name': name, 'position': position, 'department': department, 'id': identification})
+            print("Employee added successfully.")
 
     elif choice == '2':
         if not employees:
@@ -34,7 +38,7 @@ while True:
     elif choice == '3':
         search_name = input("Enter employee name to search: ")
         found = False
-        for emp in employess:
+        for emp in employees:
             if emp['name'].lower() == search_name.lower():
                 print(f"Found: {emp['name']} - {emp['position']} - {emp['department']} - {emp['id']}")
                 found = True
@@ -47,9 +51,18 @@ while True:
         for emp in employees:
             if emp['name'].lower() == update_name.lower():
                 new_name = input("Enter new name: ")
-                new_position = input("Enter new position: ")
-                emp['name'] = new_name
-                emp['position'] = new_position
+                if any(e['name'].lower() == new_name.lower() for e in employees if e != emp):
+                    print("An employee with this name already exists.")
+                else:
+                     new_position = input("Enter new position: ")
+                     print(new_position)
+                     new_department = input("Enter new department: ")
+                     print(new_department)
+                
+                     emp['name'] = new_name
+                     emp['position'] = new_position
+                     emp['department'] = new_department
+                
                 print("Employee updated successfully.")
                 break
         else:
